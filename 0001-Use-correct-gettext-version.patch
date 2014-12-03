@@ -1,0 +1,26 @@
+From 2ebf6e5ec8953f7d85f3e5e988bb104be90d84aa Mon Sep 17 00:00:00 2001
+From: Ikey Doherty <michael.i.doherty@intel.com>
+Date: Tue, 3 Mar 2015 16:34:50 +0000
+Subject: [PATCH] Use correct gettext version
+
+Signed-off-by: Ikey Doherty <michael.i.doherty@intel.com>
+---
+ configure.ac | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configure.ac b/configure.ac
+index 01ea237..5ada4da 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -177,7 +177,7 @@ dnl
+ dnl Gettext
+ dnl
+ AM_GNU_GETTEXT([external],[need-ngettext])
+-AM_GNU_GETTEXT_VERSION([0.17])
++AM_GNU_GETTEXT_VERSION([0.18])
+ 
+ AC_PROG_RANLIB
+ 
+-- 
+1.9.1
+

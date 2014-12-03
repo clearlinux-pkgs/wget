@@ -1,0 +1,1 @@
+ --with-ssl=openssl --disable-psl --disable-ntlm

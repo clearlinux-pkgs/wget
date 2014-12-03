@@ -1,0 +1,13 @@
+#
+# This file contains extra pkgconfig build requirements that don't get picked up but are 
+# desirable. One name per line, no whitespace.
+#
+flex
+texinfo
+perl(HTTP::Daemon)
+perl(HTTP::Request)
+perl(URI)
+perl(HTTP::Date)
+perl(LWP::MediaTypes)
+perl(IO::Socket::SSL)
+perl(Net::SSLeay)
