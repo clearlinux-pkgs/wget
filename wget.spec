@@ -4,7 +4,7 @@
 #
 Name     : wget
 Version  : 1.16.3
-Release  : 16
+Release  : 17
 URL      : http://ftp.gnu.org/gnu/wget/wget-1.16.3.tar.xz
 Source0  : http://ftp.gnu.org/gnu/wget/wget-1.16.3.tar.xz
 Summary  : No detailed summary available
