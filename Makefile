@@ -1,4 +1,5 @@
 PKG_NAME := wget
-URL := http://ftp.gnu.org/gnu/wget/wget-1.16.3.tar.xz
+URL := http://ftp.gnu.org/gnu/wget/wget-1.17.tar.xz
+ARCHIVES :=
 
 include ../common/Makefile.common
