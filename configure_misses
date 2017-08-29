@@ -1,0 +1,29 @@
+Configure miss: a Python interpreter with version >= 3.0
+Configure miss: sys/utime.h usability
+Configure miss: sys/utime.h presence
+Configure miss: sys/utime.h
+Configure miss: xlocale.h
+Configure miss: getprogname
+Configure miss: getexecname
+Configure miss: whether wint_t is too small
+Configure miss: whether stdint.h predates C++11
+Configure miss: whether included libunistring is requested
+Configure miss: libunistring
+Configure miss: whether <limits.h> defines MIN and MAX
+Configure miss: whether C symbols are prefixed with underscore at the linker level
+Configure miss: strerror_r with POSIX signature
+Configure miss: whether gai_strerrorA is declared
+Configure miss: whether __argv is declared
+Configure miss: ioctl with POSIX signature
+Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
+Configure miss: whether the C locale is free of encoding errors
+Configure miss: __mktime_internal
+Configure miss: working nanosleep
+Configure miss: sigsetjmp
+Configure miss: libpsl
+Configure miss: library containing psl_builtin
+Configure miss: libmetalink
+Configure miss: library containing idn2_lookup_u8
+Configure miss: uuid.h usability
+Configure miss: uuid.h presence
+Configure miss: uuid.h

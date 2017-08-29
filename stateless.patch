@@ -33,19 +33,6 @@ index b90f68b..7cea6d2 100644
  	@if test -f $(DESTDIR)$(WGETRC); then \
  	  if cmp -s $(srcdir)/sample.wgetrc $(DESTDIR)$(WGETRC); then echo ""; \
  	     else \
-diff --git a/src/Makefile.am b/src/Makefile.am
-index ce830b2..6f67f0c 100644
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -36,7 +36,7 @@ IRI_OBJ = iri.c
- endif
- 
- # The following line is losing on some versions of make!
--DEFS     = @DEFS@ -DSYSTEM_WGETRC=\"$(sysconfdir)/wgetrc\" -DLOCALEDIR=\"$(localedir)\"
-+DEFS     = @DEFS@ -DSYSTEM_WGETRC=\"$(sysconfdir)/wgetrc\" -DDEFAULT_WGETRC=\"$(datadir)/defaults/wget/wgetrc\" -DLOCALEDIR=\"$(localedir)\"
- LIBS     = @LIBICONV@ @LIBINTL@ @LIBS@ $(LIB_CLOCK_GETTIME)
- 
- EXTRA_DIST = css.l css.c css_.c build_info.c.in
 diff --git a/src/init.c b/src/init.c
 index 088a6e9..8bb26ef 100644
 --- a/src/init.c
@@ -64,3 +51,14 @@ index 088a6e9..8bb26ef 100644
 -- 
 1.9.1
 
+--- wget-1.19/src/Makefile.am~	2017-01-13 11:39:14.000000000 +0000
++++ wget-1.19/src/Makefile.am	2017-08-29 15:06:27.869906893 +0000
+@@ -44,7 +44,7 @@
+ endif
+ 
+ # The following line is losing on some versions of make!
+-DEFS     = @DEFS@ -DSYSTEM_WGETRC=\"$(sysconfdir)/wgetrc\" -DLOCALEDIR=\"$(localedir)\"
++DEFS     = @DEFS@ -DSYSTEM_WGETRC=\"$(sysconfdir)/wgetrc\" -DLOCALEDIR=\"$(localedir)\"  -DDEFAULT_WGETRC=\"$(datadir)/defaults/wget/wgetrc\" 
+ 
+ EXTRA_DIST = css.l css.c css_.c build_info.c.in
+ 
