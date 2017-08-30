@@ -1,4 +1,100 @@
+2017-02-11  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* NEWS: update
+
+	isrc/http.c (check_retry_on_http_error): Fix gcc warning
+
+2017-02-11  Tom Szilagyi  <tomszilagyi@gmail.com>
+
+	Add support for --retry-on-http-error
+	* doc/wget.text: Add documentation
+	* src/http.c: Add function check_retry_on_http_error ()
+	* src/init.c: Add opt.retry_on_http_error
+	* src/main.c: Add struct for retry-on-http-error to option_data[]
+	* src/options.h: Add retry_on_http_error to struct options
+
+2017-02-11  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	Revert "Add support for --retry-on-http-error"
+	This reverts commit 977276374d1be7f171f5da8633368025c88b9eee.
+
+2017-02-10  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	Change libtool library deps to non-libtool deps
+	Reported-by: Yousong Zhou
+	Fixes: #50260
+
+2017-02-09  Tom Szilagyi  <tomszilagyi@gmail.com>
+
+	Add support for --retry-on-http-error
+	* doc/wget.texi: Add description for --retry-on-http-error
+	* src/http.c (gethttp):
+	Consider given HTTP response codes as non-fatal, transient errors.
+	Supply a comma-separated list of 3-digit HTTP response codes as
+	argument. Useful to work around special circumstances where retries
+	are required, but the server responds with an error code normally not
+	retried by Wget. Such errors might be 503 (Service Unavailable) and
+	429 (Too Many Requests). Retries enabled by this option are performed
+	subject to the normal retry timing and retry count limitations of
+	Wget.
+
+	Using this option is intended to support special use cases only and is
+	generally not recommended, as it can force retries even in cases where
+	the server is actually trying to decrease its load. Please use it
+	wisely and only if you know what you are doing.
+
+	Example use and a starting point for manual testing:
+	  wget --retry-on-http-error=429,503 http://httpbin.org/status/503
+
+2017-02-09  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* tests/WgetTests.pm: Add --no-config to wget invocation
+	Without --no-config, wgetrc commands may disturb the tests.
+
+	Reported-by: Dagobert Michelsen
+
+2017-02-06  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* tests/WgetTests.pm (_verify_download): Fix failure message
+	Reported-by: Zhiming Wang
+
+	* src/http.c (initialize_request): Fix regression in .netrc auth
+	Reported-by: Axel Reinhold
+
+	* src/iri.c (idn_encode): Fix memory leak
+
+2017-02-06  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	Remove skipping libunistring with --disable-iri
+	* configure.ac: Remove checking for IRI=no
+
+	On certain systems, gnulib falls back to libunistring
+	for mbtowc() and wcwidth() (used in src/progress.c).
+
+	Reported-by: Zhiming Wang
+
+2017-02-04  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* bootstrap.conf: Add gnulib module wcwidth
+
+	Fix include/define clash with gnulib's unlink module
+	* src/options.h: Rename options.unlink to options.unlink_requested
+	* src/init.c: Replace options unlink member by unlink_requested
+	* src/http.c: Likewise
+	* src/ftp.c: Likewise
+
+	* bootstrap.conf: Specify unicode modules more exact
+
+	* src/xattr.h: Fix #define fsetxattr for MacOS and FreeBSD
+	Reported-by: Zhiming Wang
+
 2017-02-03  Tim Rühsen  <tim.ruehsen@gmx.de>
+
+	* contrib/release: New release helper script
+
+	* cfg.mk: Fix syntax-check
+
+	* doc/announcement_1.19.txt: Add new file
 
 	* src/utils.c: Move macro FMT_MAX_LENGTH into scope
 
