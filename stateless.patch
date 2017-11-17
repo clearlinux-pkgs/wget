@@ -12,7 +12,7 @@ Signed-off-by: Ikey Doherty <michael.i.doherty@intel.com>
  3 files changed, 7 insertions(+), 3 deletions(-)
 
 diff --git a/doc/Makefile.am b/doc/Makefile.am
-index b90f68b..7cea6d2 100644
+index 0a03319..d7222aa 100644
 --- a/doc/Makefile.am
 +++ b/doc/Makefile.am
 @@ -30,7 +30,7 @@ RM = rm -f
@@ -24,7 +24,7 @@ index b90f68b..7cea6d2 100644
  SAMPLERCTEXI = sample.wgetrc.munged_for_texi_inclusion
  
  #
-@@ -89,7 +89,7 @@ install.man: $(MAN)
+@@ -90,7 +90,7 @@ install.man: $(MAN)
  
  # install sample.wgetrc
  install.wgetrc: $(srcdir)/sample.wgetrc
@@ -33,27 +33,11 @@ index b90f68b..7cea6d2 100644
  	@if test -f $(DESTDIR)$(WGETRC); then \
  	  if cmp -s $(srcdir)/sample.wgetrc $(DESTDIR)$(WGETRC); then echo ""; \
  	     else \
-diff --git a/src/init.c b/src/init.c
-index 088a6e9..8bb26ef 100644
---- a/src/init.c
-+++ b/src/init.c
-@@ -684,6 +684,10 @@ or specify a different file using --config.\n"), env_sysrc);
-     ok &= run_wgetrc (SYSTEM_WGETRC);
-   /* If there are any problems parsing the system wgetrc file, tell
-      the user and exit */
-+#ifdef DEFAULT_WGETRC
-+  else if (file_exists_p (DEFAULT_WGETRC))
-+    ok &= run_wgetrc (DEFAULT_WGETRC);
-+#endif
-   if (! ok)
-     {
-       fprintf (stderr, _("\
--- 
-1.9.1
-
---- wget-1.19/src/Makefile.am~	2017-01-13 11:39:14.000000000 +0000
-+++ wget-1.19/src/Makefile.am	2017-08-29 15:06:27.869906893 +0000
-@@ -44,7 +44,7 @@
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 28c0be2..cff301d 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -44,7 +44,7 @@ XATTR_OBJ = xattr.c
  endif
  
  # The following line is losing on some versions of make!
@@ -62,3 +46,18 @@ index 088a6e9..8bb26ef 100644
  
  EXTRA_DIST = css.l css.c css_.c build_info.c.in
  
+diff --git a/src/init.c b/src/init.c
+index 1064883..5700361 100644
+--- a/src/init.c
++++ b/src/init.c
+@@ -760,6 +760,10 @@ or specify a different file using --config.\n"), env_sysrc);
+     ok &= run_wgetrc (SYSTEM_WGETRC, &flstats);
+   /* If there are any problems parsing the system wgetrc file, tell
+      the user and exit */
++#ifdef DEFAULT_WGETRC
++  else if (file_exists_p (DEFAULT_WGETRC, NULL))
++    ok &= run_wgetrc (DEFAULT_WGETRC, &flstats);
++#endif
+   if (! ok)
+     {
+       fprintf (stderr, _("\

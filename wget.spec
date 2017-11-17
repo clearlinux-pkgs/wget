@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x08302DB6A2670428 (tim.ruehsen@gmx.de)
 #
 Name     : wget
-Version  : 1.19.1
-Release  : 22
-URL      : https://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz
-Source0  : https://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz
-Source99 : https://ftp.gnu.org/gnu/wget/wget-1.19.1.tar.xz.sig
+Version  : 1.19.2
+Release  : 24
+URL      : https://ftp.gnu.org/gnu/wget/wget-1.19.2.tar.gz
+Source0  : https://ftp.gnu.org/gnu/wget/wget-1.19.2.tar.gz
+Source99 : https://ftp.gnu.org/gnu/wget/wget-1.19.2.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -39,7 +39,6 @@ BuildRequires : pkgconfig(zlib)
 BuildRequires : texinfo
 Patch1: stateless.patch
 Patch2: 0001-Use-correct-gettext-version.patch
-Patch3: CVE-2017-6508.patch
 
 %description
 GNU Wget
@@ -83,17 +82,16 @@ locales components for the wget package.
 
 
 %prep
-%setup -q -n wget-1.19.1
+%setup -q -n wget-1.19.2
 %patch1 -p1
 %patch2 -p1
-%patch3 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1504804078
+export SOURCE_DATE_EPOCH=1510955154
 export CFLAGS="$CFLAGS -fstack-protector-strong "
 export FCFLAGS="$CFLAGS -fstack-protector-strong "
 export FFLAGS="$CFLAGS -fstack-protector-strong "
@@ -109,7 +107,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1504804078
+export SOURCE_DATE_EPOCH=1510955154
 rm -rf %{buildroot}
 %make_install
 %find_lang wget
