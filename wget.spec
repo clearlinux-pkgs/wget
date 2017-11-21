@@ -6,7 +6,7 @@
 #
 Name     : wget
 Version  : 1.19.2
-Release  : 24
+Release  : 25
 URL      : https://ftp.gnu.org/gnu/wget/wget-1.19.2.tar.gz
 Source0  : https://ftp.gnu.org/gnu/wget/wget-1.19.2.tar.gz
 Source99 : https://ftp.gnu.org/gnu/wget/wget-1.19.2.tar.gz.sig
