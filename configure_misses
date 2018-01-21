@@ -16,6 +16,5 @@ Configure miss: libpsl
 Configure miss: library containing psl_builtin
 Configure miss: libmetalink
 Configure miss: library containing idn2_lookup_u8
-Configure miss: uuid.h usability
 Configure miss: uuid.h presence
 Configure miss: uuid.h

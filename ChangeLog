@@ -1,3 +1,36 @@
+2018-01-21  Darshit Shah  <darnir@gnu.org>
+
+	Update NEWS file for new release
+
+	Fix typo in documentation
+
+2018-01-21  Darshit Shah  <darnir@gnu.org>
+
+	Switch off compression by default
+	Gzip compression has a number of bugs which need to be ironed out before
+	we can support it by default. Some of these stem from a misunderstanding
+	of the HTTP spec, but a lot of them are also due to many web servers not
+	being compliant with RFC 7231.
+
+	With this commit, I am marking GZip compression support as experimental
+	in GNU Wget pending further investigation and the addition of tests.
+
+	* src/init.c (defaults): Switch of compression support by default
+	* docs/wget.texi: State that compression is experimental
+
+2018-01-21  Darshit Shah  <darnir@gnu.org>
+
+	Pull gnulib module forward
+
+	Revert "* src/init.c (defaults): Set compression_none as the default compression"
+	This reverts commit 8283ac08467016283277578b96533febb8ce1adb.
+
+	* src/init.c (defaults): Set compression_none as the default compression
+
+2018-01-20  Reiji  <gey3dr@gmail.com>
+
+	* src/http.c (gethttp): Fix bug that prevented all files from being decompressed
+
 2018-01-19  Tim Rühsen  <tim.ruehsen@gmx.de>
 
 	* src/host.c (sufmatch): Fix to domain matching

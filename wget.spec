@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x64FF90AAE8C70AF9 (darnir@gnu.org)
 #
 Name     : wget
-Version  : 1.19.3
-Release  : 26
-URL      : https://ftp.gnu.org/gnu/wget/wget-1.19.3.tar.gz
-Source0  : https://ftp.gnu.org/gnu/wget/wget-1.19.3.tar.gz
-Source99 : https://ftp.gnu.org/gnu/wget/wget-1.19.3.tar.gz.sig
+Version  : 1.19.4
+Release  : 27
+URL      : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz
+Source0  : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz
+Source99 : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -82,7 +82,7 @@ locales components for the wget package.
 
 
 %prep
-%setup -q -n wget-1.19.3
+%setup -q -n wget-1.19.4
 %patch1 -p1
 %patch2 -p1
 
@@ -91,7 +91,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516418957
+export SOURCE_DATE_EPOCH=1516552260
 export CFLAGS="$CFLAGS -fstack-protector-strong "
 export FCFLAGS="$CFLAGS -fstack-protector-strong "
 export FFLAGS="$CFLAGS -fstack-protector-strong "
@@ -107,7 +107,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1516418957
+export SOURCE_DATE_EPOCH=1516552260
 rm -rf %{buildroot}
 %make_install
 %find_lang wget
