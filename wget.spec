@@ -6,7 +6,7 @@
 #
 Name     : wget
 Version  : 1.19.4
-Release  : 27
+Release  : 28
 URL      : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz
 Source0  : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz
 Source99 : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz.sig
