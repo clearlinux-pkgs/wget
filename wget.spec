@@ -6,10 +6,10 @@
 #
 Name     : wget
 Version  : 1.19.4
-Release  : 28
-URL      : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz
-Source0  : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz
-Source99 : https://ftp.gnu.org/gnu/wget/wget-1.19.4.tar.gz.sig
+Release  : 29
+URL      : https://mirrors.kernel.org/gnu/wget/wget-1.19.4.tar.gz
+Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.19.4.tar.gz
+Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.19.4.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -91,11 +91,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1516552260
-export CFLAGS="$CFLAGS -fstack-protector-strong "
-export FCFLAGS="$CFLAGS -fstack-protector-strong "
-export FFLAGS="$CFLAGS -fstack-protector-strong "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong "
+export SOURCE_DATE_EPOCH=1520622904
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
 %reconfigure --disable-static --with-ssl=openssl --disable-psl --disable-ntlm
 make  %{?_smp_mflags}
 
@@ -107,7 +107,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1516552260
+export SOURCE_DATE_EPOCH=1520622904
 rm -rf %{buildroot}
 %make_install
 %find_lang wget
