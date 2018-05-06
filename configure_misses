@@ -1,4 +1,3 @@
-Configure miss: a Python interpreter with version >= 3.0
 Configure miss: sys/utime.h usability
 Configure miss: sys/utime.h presence
 Configure miss: crtdefs.h
