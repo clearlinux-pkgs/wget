@@ -6,7 +6,7 @@
 #
 Name     : wget
 Version  : 1.19.5
-Release  : 31
+Release  : 32
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz.sig
@@ -89,11 +89,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1525633693
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs "
+export SOURCE_DATE_EPOCH=1526025330
+export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 %reconfigure --disable-static --with-ssl=openssl --disable-psl --disable-ntlm
 make  %{?_smp_mflags}
 
@@ -105,7 +105,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1525633693
+export SOURCE_DATE_EPOCH=1526025330
 rm -rf %{buildroot}
 %make_install
 %find_lang wget
