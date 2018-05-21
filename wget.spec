@@ -6,7 +6,7 @@
 #
 Name     : wget
 Version  : 1.19.5
-Release  : 32
+Release  : 33
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz.sig
@@ -14,16 +14,9 @@ Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: wget-bin
-Requires: wget-data
 Requires: wget-doc
 Requires: wget-locales
-BuildRequires : automake
-BuildRequires : automake-dev
 BuildRequires : flex
-BuildRequires : gettext-bin
-BuildRequires : libtool
-BuildRequires : libtool-dev
-BuildRequires : m4
 BuildRequires : perl(HTTP::Daemon)
 BuildRequires : perl(HTTP::Date)
 BuildRequires : perl(HTTP::Request)
@@ -31,13 +24,11 @@ BuildRequires : perl(IO::Socket::SSL)
 BuildRequires : perl(LWP::MediaTypes)
 BuildRequires : perl(Net::SSLeay)
 BuildRequires : perl(URI)
-BuildRequires : pkg-config-dev
 BuildRequires : pkgconfig(libpcre)
 BuildRequires : pkgconfig(openssl)
 BuildRequires : pkgconfig(uuid)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : texinfo
-Patch1: stateless.patch
 
 %description
 GNU Wget
@@ -50,18 +41,9 @@ retrieval through HTTP proxies.
 %package bin
 Summary: bin components for the wget package.
 Group: Binaries
-Requires: wget-data
 
 %description bin
 bin components for the wget package.
-
-
-%package data
-Summary: data components for the wget package.
-Group: Data
-
-%description data
-data components for the wget package.
 
 
 %package doc
@@ -82,19 +64,18 @@ locales components for the wget package.
 
 %prep
 %setup -q -n wget-1.19.5
-%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526025330
+export SOURCE_DATE_EPOCH=1526921433
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-%reconfigure --disable-static --with-ssl=openssl --disable-psl --disable-ntlm
+%configure --disable-static --with-ssl=openssl --disable-psl --disable-ntlm
 make  %{?_smp_mflags}
 
 %check
@@ -105,7 +86,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1526025330
+export SOURCE_DATE_EPOCH=1526921433
 rm -rf %{buildroot}
 %make_install
 %find_lang wget
@@ -116,10 +97,6 @@ rm -rf %{buildroot}
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/wget
-
-%files data
-%defattr(-,root,root,-)
-/usr/share/defaults/wget/wgetrc
 
 %files doc
 %defattr(-,root,root,-)

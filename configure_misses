@@ -11,9 +11,10 @@ Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: __mktime_internal
 Configure miss: working nanosleep
 Configure miss: sigsetjmp
-Configure miss: libpsl
+Configure miss: LIBPSL
 Configure miss: library containing psl_builtin
-Configure miss: libmetalink
+Configure miss: gpgme-config
+Configure miss: METALINK
 Configure miss: library containing idn2_lookup_u8
 Configure miss: uuid.h usability
 Configure miss: uuid.h presence
