@@ -6,7 +6,7 @@
 #
 Name     : wget
 Version  : 1.19.5
-Release  : 33
+Release  : 34
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz.sig
