@@ -13,6 +13,7 @@ Configure miss: working nanosleep
 Configure miss: sigsetjmp
 Configure miss: LIBPSL
 Configure miss: library containing psl_builtin
+Configure miss: RAND_egd
 Configure miss: gpgme-config
 Configure miss: METALINK
 Configure miss: library containing idn2_lookup_u8

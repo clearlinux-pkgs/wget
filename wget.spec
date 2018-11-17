@@ -6,17 +6,20 @@
 #
 Name     : wget
 Version  : 1.19.5
-Release  : 34
+Release  : 35
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.19.5.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: wget-bin
-Requires: wget-doc
-Requires: wget-locales
+Requires: wget-bin = %{version}-%{release}
+Requires: wget-license = %{version}-%{release}
+Requires: wget-locales = %{version}-%{release}
+Requires: wget-man = %{version}-%{release}
 BuildRequires : flex
+BuildRequires : glibc-locale
+BuildRequires : perl
 BuildRequires : perl(HTTP::Daemon)
 BuildRequires : perl(HTTP::Date)
 BuildRequires : perl(HTTP::Request)
@@ -41,6 +44,8 @@ retrieval through HTTP proxies.
 %package bin
 Summary: bin components for the wget package.
 Group: Binaries
+Requires: wget-license = %{version}-%{release}
+Requires: wget-man = %{version}-%{release}
 
 %description bin
 bin components for the wget package.
@@ -49,9 +54,18 @@ bin components for the wget package.
 %package doc
 Summary: doc components for the wget package.
 Group: Documentation
+Requires: wget-man = %{version}-%{release}
 
 %description doc
 doc components for the wget package.
+
+
+%package license
+Summary: license components for the wget package.
+Group: Default
+
+%description license
+license components for the wget package.
 
 
 %package locales
@@ -62,6 +76,14 @@ Group: Default
 locales components for the wget package.
 
 
+%package man
+Summary: man components for the wget package.
+Group: Default
+
+%description man
+man components for the wget package.
+
+
 %prep
 %setup -q -n wget-1.19.5
 
@@ -70,7 +92,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1526921433
+export SOURCE_DATE_EPOCH=1542434501
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -86,8 +108,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1526921433
+export SOURCE_DATE_EPOCH=1542434501
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/wget
+cp COPYING %{buildroot}/usr/share/package-licenses/wget/COPYING
 %make_install
 %find_lang wget
 
@@ -99,9 +123,16 @@ rm -rf %{buildroot}
 /usr/bin/wget
 
 %files doc
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 %doc /usr/share/info/*
-%doc /usr/share/man/man1/*
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/wget/COPYING
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/wget.1
 
 %files locales -f wget.lang
 %defattr(-,root,root,-)
