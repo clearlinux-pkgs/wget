@@ -1,10 +1,15 @@
+Configure miss: 32-bit host C ABI
 Configure miss: sys/utime.h usability
 Configure miss: sys/utime.h presence
 Configure miss: crtdefs.h
+Configure miss: fpurge
+Configure miss: whether fflush works on input streams
 Configure miss: whether included libunistring is requested
 Configure miss: libunistring
 Configure miss: whether C symbols are prefixed with underscore at the linker level
 Configure miss: strerror_r with POSIX signature
+Configure miss: whether fpurge is declared
+Configure miss: _fseeki64
 Configure miss: whether gai_strerrorA is declared
 Configure miss: ioctl with POSIX signature
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
@@ -14,9 +19,9 @@ Configure miss: sigsetjmp
 Configure miss: LIBPSL
 Configure miss: library containing psl_builtin
 Configure miss: RAND_egd
-Configure miss: gpgme-config
-Configure miss: METALINK
 Configure miss: library containing idn2_lookup_u8
 Configure miss: uuid.h usability
 Configure miss: uuid.h presence
 Configure miss: uuid.h
+Configure miss: gpgme-config
+Configure miss: METALINK
