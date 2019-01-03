@@ -6,7 +6,7 @@
 #
 Name     : wget
 Version  : 1.20.1
-Release  : 37
+Release  : 38
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.20.1.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.20.1.tar.gz
 Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.20.1.tar.gz.sig
