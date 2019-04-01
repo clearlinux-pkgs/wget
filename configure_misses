@@ -15,6 +15,7 @@ Configure miss: ioctl with POSIX signature
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: __mktime_internal
 Configure miss: working nanosleep
+Configure miss: working re_compile_pattern
 Configure miss: sigsetjmp
 Configure miss: LIBPSL
 Configure miss: library containing psl_builtin
