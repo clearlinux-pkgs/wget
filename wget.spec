@@ -5,12 +5,12 @@
 # Source0 file verified with key 0x64FF90AAE8C70AF9 (darnir@gnu.org)
 #
 Name     : wget
-Version  : 1.20.2
-Release  : 39
-URL      : https://mirrors.kernel.org/gnu/wget/wget-1.20.2.tar.gz
-Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.20.2.tar.gz
-Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.20.2.tar.gz.sig
-Summary  : No detailed summary available
+Version  : 1.20.3
+Release  : 40
+URL      : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz
+Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz
+Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz.sig
+Summary  : Network utility to retrieve files from the Web
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: wget-bin = %{version}-%{release}
@@ -86,15 +86,14 @@ man components for the wget package.
 
 
 %prep
-%setup -q -n wget-1.20.2
+%setup -q -n wget-1.20.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1554150592
-export LDFLAGS="${LDFLAGS} -fno-lto"
+export SOURCE_DATE_EPOCH=1554470132
 export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
 export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
@@ -110,7 +109,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1554150592
+export SOURCE_DATE_EPOCH=1554470132
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wget
 cp COPYING %{buildroot}/usr/share/package-licenses/wget/COPYING
