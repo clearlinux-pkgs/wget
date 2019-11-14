@@ -6,14 +6,15 @@
 #
 Name     : wget
 Version  : 1.20.3
-Release  : 40
+Release  : 41
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz
-Source99 : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz.sig
-Summary  : Network utility to retrieve files from the Web
+Source1 : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: wget-bin = %{version}-%{release}
+Requires: wget-info = %{version}-%{release}
 Requires: wget-license = %{version}-%{release}
 Requires: wget-locales = %{version}-%{release}
 Requires: wget-man = %{version}-%{release}
@@ -52,13 +53,12 @@ Requires: wget-license = %{version}-%{release}
 bin components for the wget package.
 
 
-%package doc
-Summary: doc components for the wget package.
-Group: Documentation
-Requires: wget-man = %{version}-%{release}
+%package info
+Summary: info components for the wget package.
+Group: Default
 
-%description doc
-doc components for the wget package.
+%description info
+info components for the wget package.
 
 
 %package license
@@ -87,32 +87,34 @@ man components for the wget package.
 
 %prep
 %setup -q -n wget-1.20.3
+cd %{_builddir}/wget-1.20.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1554470132
-export CFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
-export CXXFLAGS="$CXXFLAGS -fstack-protector-strong -mzero-caller-saved-regs=used "
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1573775179
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --with-ssl=openssl --disable-psl --disable-ntlm
 make  %{?_smp_mflags}
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1554470132
+export SOURCE_DATE_EPOCH=1573775179
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wget
-cp COPYING %{buildroot}/usr/share/package-licenses/wget/COPYING
+cp %{_builddir}/wget-1.20.3/COPYING %{buildroot}/usr/share/package-licenses/wget/0dd432edfab90223f22e49c02e2124f87d6f0a56
 %make_install
 %find_lang wget
 
@@ -123,13 +125,13 @@ cp COPYING %{buildroot}/usr/share/package-licenses/wget/COPYING
 %defattr(-,root,root,-)
 /usr/bin/wget
 
-%files doc
+%files info
 %defattr(0644,root,root,0755)
-%doc /usr/share/info/*
+/usr/share/info/wget.info
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/wget/COPYING
+/usr/share/package-licenses/wget/0dd432edfab90223f22e49c02e2124f87d6f0a56
 
 %files man
 %defattr(0644,root,root,0755)
