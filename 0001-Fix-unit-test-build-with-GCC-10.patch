@@ -1,0 +1,32 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Patrick McCarty <patrick.mccarty@intel.com>
+Date: Wed, 11 Nov 2020 20:04:56 +0000
+Subject: [PATCH] Fix unit test build with GCC 10
+
+Signed-off-by: Patrick McCarty <patrick.mccarty@intel.com>
+---
+ tests/unit-tests.c | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/tests/unit-tests.c b/tests/unit-tests.c
+index 5201828..a622c2d 100644
+--- a/tests/unit-tests.c
++++ b/tests/unit-tests.c
+@@ -37,8 +37,6 @@ as that of the covered work.  */
+ 
+ #include "unit-tests.h"
+ 
+-const char *program_argstring = "TEST";
+-
+ static int tests_run;
+ 
+ static const char *
+@@ -69,8 +67,6 @@ all_tests(void)
+   return NULL;
+ }
+ 
+-const char *program_name; /* Needed by lib/error.c. */
+-
+ int
+ main (int argc _GL_UNUSED, const char *argv[])
+ {

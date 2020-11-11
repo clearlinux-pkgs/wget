@@ -6,10 +6,10 @@
 #
 Name     : wget
 Version  : 1.20.3
-Release  : 41
+Release  : 42
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz
-Source1 : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz.sig
+Source1  : https://mirrors.kernel.org/gnu/wget/wget-1.20.3.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -20,6 +20,7 @@ Requires: wget-locales = %{version}-%{release}
 Requires: wget-man = %{version}-%{release}
 BuildRequires : flex
 BuildRequires : glibc-locale
+BuildRequires : libunistring-dev
 BuildRequires : perl
 BuildRequires : perl(HTTP::Daemon)
 BuildRequires : perl(HTTP::Date)
@@ -35,6 +36,7 @@ BuildRequires : pkgconfig(uuid)
 BuildRequires : pkgconfig(zlib)
 BuildRequires : texinfo
 BuildRequires : util-linux-dev
+Patch1: 0001-Fix-unit-test-build-with-GCC-10.patch
 
 %description
 GNU Wget
@@ -88,17 +90,18 @@ man components for the wget package.
 %prep
 %setup -q -n wget-1.20.3
 cd %{_builddir}/wget-1.20.3
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1573775179
+export SOURCE_DATE_EPOCH=1605125346
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FCFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
-export FFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
+export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -mzero-caller-saved-regs=used "
 %configure --disable-static --with-ssl=openssl --disable-psl --disable-ntlm
 make  %{?_smp_mflags}
@@ -108,10 +111,10 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1573775179
+export SOURCE_DATE_EPOCH=1605125346
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wget
 cp %{_builddir}/wget-1.20.3/COPYING %{buildroot}/usr/share/package-licenses/wget/0dd432edfab90223f22e49c02e2124f87d6f0a56

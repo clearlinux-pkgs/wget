@@ -5,13 +5,13 @@ Configure miss: crtdefs.h
 Configure miss: fpurge
 Configure miss: whether fflush works on input streams
 Configure miss: whether included libunistring is requested
-Configure miss: libunistring
 Configure miss: whether C symbols are prefixed with underscore at the linker level
 Configure miss: strerror_r with POSIX signature
 Configure miss: whether fpurge is declared
 Configure miss: _fseeki64
 Configure miss: whether gai_strerrorA is declared
 Configure miss: ioctl with POSIX signature
+Configure miss: whether to use the included libunistring
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: __mktime_internal
 Configure miss: working nanosleep
