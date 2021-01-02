@@ -1,28 +1,33 @@
-Configure miss: 32-bit host C ABI
-Configure miss: sys/utime.h usability
-Configure miss: sys/utime.h presence
+Configure miss: whether the compiler is clang
+Configure miss: compiler option needed when checking for declarations
 Configure miss: crtdefs.h
+Configure miss: 32-bit host C ABI
+Configure miss: library containing yywrap
 Configure miss: fpurge
+Configure miss: posix_spawn_file_actions_addchdir
 Configure miss: whether fflush works on input streams
+Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: whether included libunistring is requested
 Configure miss: whether C symbols are prefixed with underscore at the linker level
 Configure miss: strerror_r with POSIX signature
+Configure miss: whether this system supports file names of any length
 Configure miss: whether fpurge is declared
+Configure miss: whether free is known to preserve errno
 Configure miss: _fseeki64
 Configure miss: whether gai_strerrorA is declared
 Configure miss: ioctl with POSIX signature
 Configure miss: whether to use the included libunistring
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
+Configure miss: whether mbrtowc stores incomplete characters
 Configure miss: __mktime_internal
 Configure miss: working nanosleep
 Configure miss: working re_compile_pattern
+Configure miss: sys/single_threaded.h
 Configure miss: sigsetjmp
 Configure miss: LIBPSL
 Configure miss: library containing psl_builtin
 Configure miss: RAND_egd
 Configure miss: library containing idn2_lookup_u8
-Configure miss: uuid.h usability
-Configure miss: uuid.h presence
 Configure miss: uuid.h
 Configure miss: gpgme-config
 Configure miss: METALINK

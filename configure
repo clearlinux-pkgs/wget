@@ -1,1 +1,3 @@
- --with-ssl=openssl --disable-psl --disable-ntlm
+--with-ssl=openssl
+--disable-psl
+--disable-ntlm
