@@ -1,5 +1,17 @@
 GNU Wget NEWS -- history of user-visible changes.
 
+* Noteworthy changes in release 1.21.2 (2021-09-07)
+
+** Support for autoconf 2.71
+
+** Fix a double free in FTP when using an absolute path
+
+** Release tarballs no longer have a dependency on Python.
+
+** --page-requisites will now also download links marked as "alternate
+   stylesheet" or "icon"
+
+
 * Noteworthy changes in release 1.21.1 (2021-01-09)
 
 ** Fix compilation on MacOS and Solaris 9
@@ -419,7 +431,7 @@ Building from the Tarballs works as it used to.
    backward-incompatibility; any script that relies on the old
    behaviour must use --trust-server-names.
 
-** Fix a problem when -k is used and some URLs are specified trough
+** Fix a problem when -k is used and some URLs are specified through
    CSS.
 
 ** Convert correctly URLs that need to be encoded to local files when following
@@ -429,7 +441,7 @@ Building from the Tarballs works as it used to.
 
 ** Print the total download time as part of the summary for recursive downloads.
 
-** Now it is possible to specify a different startup configuration file trough
+** Now it is possible to specify a different startup configuration file through
    the --config option.
 
 ** Fix an infinite loop with the error '<filename> has sprung into existence'
