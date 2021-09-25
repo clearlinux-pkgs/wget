@@ -101,7 +101,7 @@ export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=u
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-%configure --disable-static --with-ssl=openssl \
+%configure --with-ssl=openssl \
 --disable-psl \
 --disable-ntlm
 make  %{?_smp_mflags}
