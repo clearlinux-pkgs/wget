@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x64FF90AAE8C70AF9 (darnir@gnu.org)
 #
 Name     : wget
-Version  : 1.21.2
-Release  : 46
-URL      : https://mirrors.kernel.org/gnu/wget/wget-1.21.2.tar.gz
-Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.21.2.tar.gz
-Source1  : https://mirrors.kernel.org/gnu/wget/wget-1.21.2.tar.gz.sig
+Version  : 1.21.3
+Release  : 47
+URL      : https://mirrors.kernel.org/gnu/wget/wget-1.21.3.tar.gz
+Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.21.3.tar.gz
+Source1  : https://mirrors.kernel.org/gnu/wget/wget-1.21.3.tar.gz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -29,8 +29,10 @@ BuildRequires : perl(IO::Socket::SSL)
 BuildRequires : perl(LWP::MediaTypes)
 BuildRequires : perl(Net::SSLeay)
 BuildRequires : perl(URI)
+BuildRequires : pkgconfig(libidn2)
 BuildRequires : pkgconfig(libpcre)
 BuildRequires : pkgconfig(libpcre2-8)
+BuildRequires : pkgconfig(nettle)
 BuildRequires : pkgconfig(openssl)
 BuildRequires : pkgconfig(uuid)
 BuildRequires : pkgconfig(zlib)
@@ -87,15 +89,15 @@ man components for the wget package.
 
 
 %prep
-%setup -q -n wget-1.21.2
-cd %{_builddir}/wget-1.21.2
+%setup -q -n wget-1.21.3
+cd %{_builddir}/wget-1.21.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631053593
+export SOURCE_DATE_EPOCH=1645919975
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
 export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
@@ -114,10 +116,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1631053593
+export SOURCE_DATE_EPOCH=1645919975
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wget
-cp %{_builddir}/wget-1.21.2/COPYING %{buildroot}/usr/share/package-licenses/wget/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/wget-1.21.3/COPYING %{buildroot}/usr/share/package-licenses/wget/0dd432edfab90223f22e49c02e2124f87d6f0a56
 %make_install
 %find_lang wget-gnulib
 %find_lang wget

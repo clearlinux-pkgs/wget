@@ -1,4 +1,5 @@
 Configure miss: 32-bit host C ABI
+Configure miss: CFLocaleCopyPreferredLanguages
 Configure miss: LIBPSL
 Configure miss: METALINK
 Configure miss: RAND_egd
@@ -10,22 +11,22 @@ Configure miss: fpurge
 Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gpgme-config
 Configure miss: ioctl with POSIX signature
-Configure miss: library containing idn2_lookup_u8
 Configure miss: library containing psl_builtin
 Configure miss: posix_spawn_file_actions_addchdir
 Configure miss: sigsetjmp
 Configure miss: strerror_r with POSIX signature
 Configure miss: uuid.h
 Configure miss: whether C symbols are prefixed with underscore at the linker level
+Configure miss: whether ctype.h defines __header_inline
 Configure miss: whether fflush works on input streams
 Configure miss: whether fpurge is declared
 Configure miss: whether gai_strerrorA is declared
 Configure miss: whether included libunistring is requested
 Configure miss: whether mbrtowc stores incomplete characters
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
+Configure miss: whether pthread_sigmask is a macro
 Configure miss: whether the compiler is clang
 Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: whether this system supports file names of any length
 Configure miss: whether to use the included libunistring
 Configure miss: working nanosleep
-Configure miss: working re_compile_pattern
