@@ -6,7 +6,7 @@
 #
 Name     : wget
 Version  : 1.21.3
-Release  : 48
+Release  : 49
 URL      : https://mirrors.kernel.org/gnu/wget/wget-1.21.3.tar.gz
 Source0  : https://mirrors.kernel.org/gnu/wget/wget-1.21.3.tar.gz
 Source1  : https://mirrors.kernel.org/gnu/wget/wget-1.21.3.tar.gz.sig
@@ -97,12 +97,12 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1645919975
+export SOURCE_DATE_EPOCH=1664895713
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FCFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export FFLAGS="$FFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
-export CXXFLAGS="$CXXFLAGS -fno-lto -fstack-protector-strong -fzero-call-used-regs=used "
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 %configure --disable-static --with-ssl=openssl \
 --disable-psl \
 --disable-ntlm
@@ -116,10 +116,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1645919975
+export SOURCE_DATE_EPOCH=1664895713
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/wget
-cp %{_builddir}/wget-1.21.3/COPYING %{buildroot}/usr/share/package-licenses/wget/0dd432edfab90223f22e49c02e2124f87d6f0a56
+cp %{_builddir}/wget-%{version}/COPYING %{buildroot}/usr/share/package-licenses/wget/0dd432edfab90223f22e49c02e2124f87d6f0a56 || :
 %make_install
 %find_lang wget-gnulib
 %find_lang wget
