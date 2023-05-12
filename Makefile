@@ -1,5 +1,5 @@
 PKG_NAME := wget
-URL = https://mirrors.kernel.org/gnu/wget/wget-1.21.3.tar.gz
+URL = https://mirrors.kernel.org/gnu/wget/wget-1.21.4.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
