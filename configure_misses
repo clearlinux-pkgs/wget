@@ -1,7 +1,5 @@
 Configure miss: 32-bit host C ABI
 Configure miss: CFLocaleCopyPreferredLanguages
-Configure miss: LIBPSL
-Configure miss: METALINK
 Configure miss: RAND_egd
 Configure miss: __mktime_internal
 Configure miss: _fseeki64
@@ -14,7 +12,7 @@ Configure miss: gcc options needed to detect all undeclared functions
 Configure miss: gpgme-config
 Configure miss: gpgrt-config
 Configure miss: ioctl with POSIX signature
-Configure miss: library containing psl_builtin
+Configure miss: libmetalink
 Configure miss: posix_spawn_file_actions_addchdir
 Configure miss: sigsetjmp
 Configure miss: stdckdint.h
@@ -32,8 +30,6 @@ Configure miss: whether included libunistring is requested
 Configure miss: whether mbrtowc stores incomplete characters
 Configure miss: whether pthread_rwlock_rdlock prefers a writer to a reader
 Configure miss: whether pthread_sigmask is a macro
-Configure miss: whether strtol works
-Configure miss: whether strtoll works
 Configure miss: whether the compiler is clang
 Configure miss: whether the compiler produces multi-arch binaries
 Configure miss: whether this system supports file names of any length
