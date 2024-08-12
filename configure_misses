@@ -15,7 +15,6 @@ Configure miss: ioctl with POSIX signature
 Configure miss: libmetalink
 Configure miss: posix_spawn_file_actions_addchdir
 Configure miss: sigsetjmp
-Configure miss: stdckdint.h
 Configure miss: strerror_r with POSIX signature
 Configure miss: unreachable
 Configure miss: uuid.h
